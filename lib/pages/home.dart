@@ -33,7 +33,6 @@ class HomePage extends StatelessWidget {
         selectedIndex: currentIndex,
       );
     }
-    final extended = viewMode == ViewMode.desktop;
     return LayoutBuilder(
       builder: (_, container) {
         return Material(
@@ -50,29 +49,28 @@ class HomePage extends StatelessWidget {
                   unselectedIconTheme: IconThemeData(
                     color: context.colorScheme.onSurfaceVariant,
                   ),
-                  selectedLabelTextStyle: context.textTheme.labelLarge!.copyWith(
+                  selectedLabelTextStyle:
+                      context.textTheme.labelLarge!.copyWith(
                     color: context.colorScheme.onSurface,
                   ),
-                  unselectedLabelTextStyle: context.textTheme.labelLarge!.copyWith(
+                  unselectedLabelTextStyle:
+                      context.textTheme.labelLarge!.copyWith(
                     color: context.colorScheme.onSurface,
                   ),
                   destinations: navigationItems
                       .map(
                         (e) => NavigationRailDestination(
-                      icon: e.icon,
-                      label: Text(
-                        Intl.message(e.label),
-                      ),
-                    ),
-                  )
+                          icon: e.icon,
+                          label: Text(
+                            Intl.message(e.label),
+                          ),
+                        ),
+                      )
                       .toList(),
                   onDestinationSelected: globalState.appController.toPage,
-                  extended: extended,
-                  minExtendedWidth: 175,
+                  extended: false,
                   selectedIndex: currentIndex,
-                  labelType: extended
-                      ? NavigationRailLabelType.none
-                      : NavigationRailLabelType.selected,
+                  labelType: NavigationRailLabelType.all,
                 ),
               ),
             ),

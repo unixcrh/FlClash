@@ -29,12 +29,13 @@ class InfoHeader extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
+          Flexible(
+            flex: 1,
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 if (info.iconData != null) ...[
                   Icon(
@@ -46,6 +47,7 @@ class InfoHeader extends StatelessWidget {
                   ),
                 ],
                 Flexible(
+                  flex: 1,
                   child: TooltipText(
                     text: Text(
                       info.label,
